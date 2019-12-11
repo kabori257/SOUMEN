@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4939713912850600817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4939713912850600831}
+  - component: {fileID: 1543407358405983080}
+  - component: {fileID: 4939713912850600830}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4939713912850600831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4939713912850600817}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.3827186, y: -23.696335, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1543407358405983080
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4939713912850600817}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &4939713912850600830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4939713912850600817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c209cb87745b34315b4f1a9acf130734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decisionSE: {fileID: 8300000, guid: e285e56f8eccf46faaf9be03f90904b6, type: 3}
+  decisionVolume: 1
+  cancelSE: {fileID: 8300000, guid: ec3bd34d2658a402e989565307621526, type: 3}
+  cancelVolume: 1
+  hyoushigiSE: {fileID: 8300000, guid: 8628f58f675a4484cb6adb3ee288f948, type: 3}
+  hyoushigiVolume: 1
+  shishiodoshiSE: {fileID: 8300000, guid: 72bdabd03a57a4d9f9752407686586d4, type: 3}
+  shishiodoshiVolume: 1
+  taikoSE: {fileID: 8300000, guid: 349a4105a6481486eac51fc179477144, type: 3}
+  taikoVolume: 1
+  taikoX2SE: {fileID: 8300000, guid: a1dfadcf5599c4053a25b6168d5a403b, type: 3}
+  taikoX2Volume: 1
+  jumpSE: {fileID: 8300000, guid: a01117313fb744933bacbfad754f9494, type: 3}
+  jumpVolume: 1
+  landSE: {fileID: 8300000, guid: a01117313fb744933bacbfad754f9494, type: 3}
+  landlVolume: 1
+  catchSE: {fileID: 8300000, guid: 7827e27848cee447f8103bb06958d82b, type: 3}
+  catchVolume: 1
+  shotSE: {fileID: 8300000, guid: e5f8e5f5d3a7c42d4a693ee25ec15644, type: 3}
+  shotVolume: 1
+  itadakimasuSE: {fileID: 8300000, guid: bf41a34b3bed34412aa0b8f4890d154f, type: 3}
+  itadakimasuVolume: 1
+  eatSE: {fileID: 8300000, guid: 81f5e9ee8373c4e9091eef7e66c271d3, type: 3}
+  eatVolume: 1
+  chopStickSE: {fileID: 8300000, guid: fb4321d1da2694d0283713f82bb64ee4, type: 3}
+  chopStickVolume: 1
+  sizeUpSE: {fileID: 8300000, guid: 8162fd9e6f11c4b0daead75227474634, type: 3}
+  sizeUpVolume: 1
+  sizeDownSE: {fileID: 8300000, guid: 380aacac2def946f79abc419cde6426e, type: 3}
+  sizeDownVolume: 1
+  speedUpSE: {fileID: 8300000, guid: b88a6ff6528084b4f9ad02adb3b309bf, type: 3}
+  speedUpVolume: 1
+  slowMotionSE: {fileID: 8300000, guid: d94b448ec25754c2c8c573abba480c39, type: 3}
+  slowMotionVolume: 1
+  waterSE: {fileID: 8300000, guid: 45f80885d390d4176a9321c93a79875e, type: 3}
+  waterVolume: 1
+  titleBGM: {fileID: 8300000, guid: 036a048daf913415d84f4bebc343feb6, type: 3}
+  titleBGM_Volume: 1
+  titleLoop: 1
+  tutorialBGM: {fileID: 8300000, guid: 036a048daf913415d84f4bebc343feb6, type: 3}
+  tutorialBGM_Volume: 1
+  tutorialLoop: 1
+  gameSceneBGM: {fileID: 8300000, guid: 478db92f140e04535b4799bd16804d43, type: 3}
+  gameScene_Volume: 1
+  gameSceneLoop: 1
+  resultBGM: {fileID: 8300000, guid: 7400ecb8afeef46938c289c09643b433, type: 3}
+  resultBGM_Volume: 1
+  resultLoop: 0
