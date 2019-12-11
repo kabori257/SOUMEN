@@ -67,7 +67,7 @@ public class NewPlayerMove : MonoBehaviour
     /// <param name="roll"></param>
     void Move(ref Vector3 roll)
     {
-        if (MyJoyCon.joyconDec.button == Joycon.Button.SHOULDER_2)
+        if (MyJoyCon.joyconDec.button == Joycon.Button.SHOULDER_2 || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
             if(dashTime < playerManager.dashTime)
             {
