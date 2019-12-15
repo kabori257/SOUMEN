@@ -161,7 +161,7 @@ MonoBehaviour:
   shotSE: {fileID: 8300000, guid: e5f8e5f5d3a7c42d4a693ee25ec15644, type: 3}
   shotVolume: 1
   itadakimasuSE: {fileID: 8300000, guid: bf41a34b3bed34412aa0b8f4890d154f, type: 3}
-  itadakimasuVolume: 1
+  itadakimasuVolume: 0.5
   eatSE: {fileID: 8300000, guid: 81f5e9ee8373c4e9091eef7e66c271d3, type: 3}
   eatVolume: 1
   chopStickSE: {fileID: 8300000, guid: fb4321d1da2694d0283713f82bb64ee4, type: 3}
@@ -188,3 +188,25 @@ MonoBehaviour:
   resultBGM: {fileID: 8300000, guid: 7400ecb8afeef46938c289c09643b433, type: 3}
   resultBGM_Volume: 1
   resultLoop: 0
+  audioSource: {fileID: 0}
+  bgmArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bgmVolume:
+  - 0
+  - 0
+  - 0
+  - 0
+  sceneTransitionSE_Array:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  sceneTransitionSE_Volume:
+  - 0
+  - 0
+  - 0
+  - 0
+  bgmLoops: 00000000

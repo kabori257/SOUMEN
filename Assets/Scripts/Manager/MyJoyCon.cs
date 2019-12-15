@@ -63,20 +63,24 @@ public class MyJoyCon : MonoBehaviour
 
         timer += 0.1f * Time.deltaTime;
 
-        foreach (var button in m_buttons)
+        if (m_joyconL != null)
         {
-            if (m_joyconL.GetButton(button))
+            foreach (var button in m_buttons)
             {
-                m_pressedButtonL = button;
+                if (m_joyconL.GetButton(button))
+                {
+                    m_pressedButtonL = button;
+                }
+                if (m_joyconR.GetButton(button))
+                {
+                    m_pressedButtonR = button;
+                }
             }
-            if (m_joyconR.GetButton(button))
-            {
-                m_pressedButtonR = button;
-            }
-        }
 
-        SetJoyCon();
-        JoyConAction();
+            SetJoyCon();
+            JoyConAction();
+
+        }
 
         //Debug.Log(joyconDec.button);
     }
@@ -103,6 +107,8 @@ public class MyJoyCon : MonoBehaviour
 
     public bool GetAnyButtonDown()
     {
+        if (m_joyconL == null) return false;
+
         if (m_joyconL.GetButtonDown(Joycon.Button.SHOULDER_1) || m_joyconL.GetButtonDown(Joycon.Button.SHOULDER_2)
             || m_joyconL.GetButtonDown(Joycon.Button.DPAD_UP) || m_joyconL.GetButtonDown(Joycon.Button.DPAD_DOWN)
             || m_joyconL.GetButtonDown(Joycon.Button.DPAD_LEFT) || m_joyconL.GetButtonDown(Joycon.Button.DPAD_RIGHT))

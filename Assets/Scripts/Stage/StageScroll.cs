@@ -45,7 +45,7 @@ public class StageScroll : MonoBehaviour
     void Start()
     {
         progress.minValue = 0;
-        progress.maxValue = goalPosCount;
+        progress.maxValue = goalPosCount - 2;
         progress.value = 0;
 
         stageObj.GetComponent<PutChopStickPoint>().chopStickRowNum = chopStickRowNum;
@@ -75,8 +75,7 @@ public class StageScroll : MonoBehaviour
     {
         for (int i = 0; i < stages.Count; i++)
         {
-            //AddForceによってステージを後ろへ移動させていく。
-            stages[i].GetComponent<Rigidbody>().AddForce(tmpSpeed * ((Vector3.back * tmpSpeed) - stages[i].GetComponent<Rigidbody>().velocity));
+            stages[i].transform.Translate(Vector3.back * tmpSpeed / 10.0f);
 
             if (stages[i].transform.position.z < -200)
             {
