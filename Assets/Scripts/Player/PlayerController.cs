@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
             waitTime += Time.deltaTime;
         }
 
-        if (isJump)
+        if (isJump && newPlayerMove.movable)
         {
 
             if (humanDictionary.Count > 0)
