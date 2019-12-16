@@ -61,7 +61,7 @@ public class GameCountDown : MonoBehaviour
 
             if (time > soundLength)
             {
-                image.sprite = images[++imageIndex];
+                if(imageIndex + 1 < images.Length) image.sprite = images[++imageIndex];
 
                 time = 0;
                 rectTransform.sizeDelta = imageSize;
@@ -72,9 +72,7 @@ public class GameCountDown : MonoBehaviour
                     playerAxis.GetComponent<NewPlayerMove>().movable = true;
                 }
 
-                if (imageIndex == 4)
-                    isStart = false;
-                    
+                if (imageIndex == 4) isStart = false;
                 else image.color = new Color(1, 1, 1, 1);
 
                 if (isGoal) isGoal = false;

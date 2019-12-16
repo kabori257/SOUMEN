@@ -12,6 +12,9 @@ public class StageScroll : MonoBehaviour
     [HideInInspector]
     public int playerPosCount = 0;                          //プレイヤーがいくつステージを超えて来たか
 
+    [HideInInspector]
+    public bool isStoped = false;
+
     [Header("ゴールまでの距離")]
     public int goalPosCount;                                //ゴールステージの距離
 
@@ -32,7 +35,11 @@ public class StageScroll : MonoBehaviour
     [SerializeField] private GameObject stageObj;           //ステージ
     [SerializeField] private GameObject startStageObj;      //ゲーム開始時に生成するステージ
     [SerializeField] private GameObject goalStageObj;       //ゴールステージ
-    [SerializeField] private Slider progress;               
+    [SerializeField] private Slider progress;
+    [SerializeField] private GameObject goalEffect;
+
+    [Header("")]
+    [SerializeField] private GameObject playerAxis;
 
     /* --- 変数 ---*/
 
@@ -54,6 +61,8 @@ public class StageScroll : MonoBehaviour
         goalStageObj.GetComponent<PutChopStickPoint>().chopStickRowNum = chopStickRowNum;
         goalStageObj.GetComponent<PutChopStickPoint>().chopStickColumnNum = chopStickColumnNum;
 
+        goalEffect.GetComponent<ParticleSystem>().Stop();
+
         //初めにステージを10個生成
         for (int i = 0; i < 10; i++)
         {
@@ -66,7 +75,6 @@ public class StageScroll : MonoBehaviour
                 stages.Add(Instantiate(startStageObj, new Vector3(0, 0, i * 100), new Quaternion()));
             else
                 stages.Add(Instantiate(stageObj, new Vector3(0, 0, i * 100), new Quaternion()));
-
         }
     }
 
@@ -75,7 +83,12 @@ public class StageScroll : MonoBehaviour
     {
         for (int i = 0; i < stages.Count; i++)
         {
-            stages[i].transform.Translate(Vector3.back * tmpSpeed / 10.0f);
+            if (!isStoped) stages[i].transform.Translate(Vector3.back * tmpSpeed / 10.0f);
+            else
+            {
+                goalEffect.GetComponent<ParticleSystem>().Play();
+                playerAxis.GetComponent<NewPlayerMove>().movable = false;
+            }
 
             if (stages[i].transform.position.z < -200)
             {

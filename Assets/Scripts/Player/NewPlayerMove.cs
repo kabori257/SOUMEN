@@ -15,6 +15,7 @@ public class NewPlayerMove : MonoBehaviour
     /* --- SerializeFieldの変数 --- */
     [SerializeField] private GameObject playerManageObj;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject dashEffect;
 
     /* --- 変数 ---*/
 
@@ -104,12 +105,17 @@ public class NewPlayerMove : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(roll);
 
+        if (dashTime / playerManager.dashTime >= 1) dashEffect.SetActive(true);
+        else dashEffect.SetActive(false);
+
         //プレイヤーの軸に対する角度の絶対値が90度以上になったらジャンプ
         if (Mathf.Abs(Mathf.DeltaAngle(0, transform.rotation.eulerAngles.z)) >= 90f && dashTime / playerManager.dashTime >= 1)
         {
             audioSource.clip = soundManager.jumpSE;
             audioSource.volume = soundManager.jumpVolume;
             audioSource.Play();
+
+            dashEffect.SetActive(false);
 
             playerController.isJump = true;
             playerController.SearchHuman();
