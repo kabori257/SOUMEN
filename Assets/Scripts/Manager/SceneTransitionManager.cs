@@ -41,7 +41,8 @@ public class SceneTransitionManager : MonoBehaviour
     {
 
         //遷移する際に押してもらうボタン。
-        if ((Input.GetKeyDown(KeyCode.Space) || myJoyCon.GetAnyButtonDown())
+        if ((Input.GetKeyDown(KeyCode.Space) || myJoyCon.GetAnyButtonDown() || Input.GetKey("joystick button 0")
+            || Input.GetKey("joystick button 1") || Input.GetKey("joystick button 2") || Input.GetKey("joystick button 3"))
             && SceneManager.GetActiveScene().buildIndex != 2 && isChanged)
         {
             SceneTransition(false);
