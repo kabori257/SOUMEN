@@ -76,15 +76,15 @@ public class StageScroll : MonoBehaviour
     public float dispertion;
 
     [SerializeField]
-    [Header("中央の箸の行数")]
+    [Header("真ん中の箸の行数")]
     public int centerChopStickRow;
 
     [SerializeField]
-    [Header("中央の列数")]
+    [Header("真ん中の列数")]
     public int centerChopStickColumn;
 
     [SerializeField]
-    [Header("中央の縦方向のばらつき")]
+    [Header("真ん中の縦方向のばらつき")]
     [Range(0, 10f)]
     public float centerDispertion;
 

@@ -55,11 +55,11 @@ public class StageScrollSettings : Editor
         {
             centerChopStickRow.intValue = EditorGUILayout.IntField("真ん中の箸の行数", centerChopStickRow.intValue);
             centerChopStickColumn.intValue = EditorGUILayout.IntField("真ん中の箸の列数", centerChopStickColumn.intValue);
-            centerDispertion.floatValue = EditorGUILayout.Slider("中央の縦方向のばらつき", centerDispertion.floatValue, 0f, 10f);
+            centerDispertion.floatValue = EditorGUILayout.Slider("真ん中縦方向のばらつき", centerDispertion.floatValue, 0f, 10f);
 
             cornerChopStickRow.intValue = EditorGUILayout.IntField("角の箸の行数", cornerChopStickRow.intValue);
             cornerChopStickColumn.intValue = EditorGUILayout.IntField("角の箸の列数", cornerChopStickColumn.intValue);
-            cornerDispertion.floatValue = EditorGUILayout.Slider("角の縦方向のばらつき", cornerDispertion.floatValue, 0f, 10f);
+            cornerDispertion.floatValue = EditorGUILayout.Slider("角縦方向のばらつき", cornerDispertion.floatValue, 0f, 10f);
         }
         else
         {
