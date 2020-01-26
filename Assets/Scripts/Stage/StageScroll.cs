@@ -2,12 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
+
+[System.Serializable]
+public struct stagePartition
+{
+    [Header("左端の角度")]
+    public float minAngle;
+
+    [Header("右端の角度")]
+    public float maxAngle;
+
+    [Header("箸の行数")]
+    public int chopStickRowNum;
+
+    [Header("箸の列数")]
+    public int chopStickColumnNum;
+
+    [Header("箸の色(デバッグ用)")]
+    public Color color;
+}
 
 /// <summary>
 /// ステージを無限スクロールさせるためのスクリプト。
 /// </summary>
 public class StageScroll : MonoBehaviour
 {
+
     /* public変数*/
     [HideInInspector]
     public int playerPosCount = 0;                          //プレイヤーがいくつステージを超えて来たか
@@ -15,18 +36,78 @@ public class StageScroll : MonoBehaviour
     [HideInInspector]
     public bool isStoped = false;
 
-    [Header("ゴールまでの距離")]
+    public bool debugMode;
+
+    [SerializeField]
+    [Header("ステージの長さ")]
     public int goalPosCount;                                //ゴールステージの距離
 
-    /* --- SerializeFieldの変数 --- */
-    [Header("一つのステージのパーツに箸が何行か")]
-    [SerializeField] private int chopStickRowNum;
-
-    [Header("一つのステージのパーツに箸が何列か")]
-    [SerializeField] private int chopStickColumnNum;
-    
+    [SerializeField]
     [Header("ステージの進む速さ")]
     public float speed;                   //ステージが移動するスピード
+
+    [SerializeField]
+    [Header("ステージの角の範囲(割合)")]
+    [Range(0.05f, 1.0f)]
+    public float cornerMargin;
+
+    [SerializeField]
+    [Header("角の設定")]
+    public bool cornerSetting;
+
+    /* --- SerializeFieldの変数 --- */
+
+    [SerializeField]
+    [Header("箸の行数")]
+    public int chopStickRowNum;
+
+    [SerializeField]
+    [Header("箸の列数")]
+    public int chopStickColumnNum;
+
+    [SerializeField]
+    [Header("角に箸が来る割合")]
+    [Range(0, 1.0f)]
+    public float cornerRate;
+
+    [SerializeField]
+    [Header("縦方向のばらつき")]
+    [Range(0, 10f)]
+    public float dispertion;
+
+    [SerializeField]
+    [Header("中央の箸の行数")]
+    public int centerChopStickRow;
+
+    [SerializeField]
+    [Header("中央の列数")]
+    public int centerChopStickColumn;
+
+    [SerializeField]
+    [Header("中央の縦方向のばらつき")]
+    [Range(0, 10f)]
+    public float centerDispertion;
+
+    [SerializeField]
+    [Header("角の箸の行数")]
+    public int cornerChopStickRow;
+
+    [SerializeField]
+    [Header("角の箸の列数")]
+    public int cornerChopStickColumn;
+
+    [SerializeField]
+    [Header("角の縦方向のばらつき")]
+    [Range(0, 10f)]
+    public float cornerDispertion;
+
+    [HideInInspector]
+    [Header("ステージ上の場所ごとに設定")]
+    public bool isPartition;
+
+    [HideInInspector]
+    [Header("ステージ上の区分(isPartition = true)")]
+    public stagePartition[] stagePartitions;
 
     [HideInInspector]
     public float tmpSpeed;
@@ -55,12 +136,6 @@ public class StageScroll : MonoBehaviour
         progress.maxValue = goalPosCount - 2;
         progress.value = 0;
 
-        stageObj.GetComponent<PutChopStickPoint>().chopStickRowNum = chopStickRowNum;
-        stageObj.GetComponent<PutChopStickPoint>().chopStickColumnNum = chopStickColumnNum;
-
-        goalStageObj.GetComponent<PutChopStickPoint>().chopStickRowNum = chopStickRowNum;
-        goalStageObj.GetComponent<PutChopStickPoint>().chopStickColumnNum = chopStickColumnNum;
-
         goalEffect.GetComponent<ParticleSystem>().Stop();
 
         //初めにステージを10個生成
@@ -75,6 +150,14 @@ public class StageScroll : MonoBehaviour
                 stages.Add(Instantiate(startStageObj, new Vector3(0, 0, i * 100), new Quaternion()));
             else
                 stages.Add(Instantiate(stageObj, new Vector3(0, 0, i * 100), new Quaternion()));
+        }
+
+        if (debugMode)
+        {
+            for (int i = 0; i < stages.Count; i++)
+            {
+                stages[i].transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+            }
         }
     }
 
@@ -103,6 +186,11 @@ public class StageScroll : MonoBehaviour
                     stages.Add(Instantiate(goalStageObj, new Vector3(0, 0, (stages.Count - 2) * 100), new Quaternion()));
                     isGoal = true;
                     goalPosCount = 100;      //ゴールステージの後ろにもステージを続けるため
+                }
+
+                if (debugMode)
+                {
+                    stages[stages.Count - 1].transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
                 }
 
                 //ステージの廃棄

@@ -199,8 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d7927e189c840d49ed8ef1e50291ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chopStickRowNum: 7
-  chopStickColumnNum: 5
   chopStickPrefabs:
   - {fileID: 4817786306470915280, guid: 102b88f4ae08d4681b091e6ce4b20978, type: 3}
   - {fileID: 6810851311099447082, guid: ae75868ff665249cd82d3e33fa6a1f07, type: 3}
