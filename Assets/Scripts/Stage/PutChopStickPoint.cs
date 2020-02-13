@@ -49,15 +49,20 @@ public class PutChopStickPoint : MonoBehaviour
         {
             for (int j = 0; j < chopStickRowNum; j++)
             {
-                GameObject tempChopStickAxis;
+                Vector3 tempPos = this.transform.position + new Vector3(0, 0, (50 - chopStickInterval / 2) - chopStickInterval * j + Random.Range(-dispertion, dispertion));
 
-                tempChopStickAxis = Instantiate(chopStickAxis,
-                    this.transform.localPosition + new Vector3(0, 0, (50 - chopStickInterval / 2) - chopStickInterval * j + Random.Range(-dispertion, dispertion)),
-                    Quaternion.identity, transform);
+                if (tempPos.z + 35 > stageScroll.startAreaRange) {
 
-                chopStickAxises.Add(tempChopStickAxis);
+                    GameObject tempChopStickAxis;
 
-                chopStickPoints.Add(tempChopStickAxis.transform.GetChild(0).gameObject);
+                    tempChopStickAxis = Instantiate(chopStickAxis,
+                        tempPos,
+                        Quaternion.identity, transform);
+
+                    chopStickAxises.Add(tempChopStickAxis);
+
+                    chopStickPoints.Add(tempChopStickAxis.transform.GetChild(0).gameObject);
+                }
             }
         }
 
@@ -105,13 +110,19 @@ public class PutChopStickPoint : MonoBehaviour
         {
             for (int j = 0; j < chopStickRowNum; j++)
             {
-                GameObject tempChopStickAxis = Instantiate(chopStickAxis,
+                Vector3 tempPos = this.transform.position + new Vector3(0, 0, (50 - chopStickInterval / 2) - chopStickInterval * j + Random.Range(-dispertion, dispertion));
+
+                if (tempPos.z + 35 > stageScroll.startAreaRange)
+                {
+
+                    GameObject tempChopStickAxis = Instantiate(chopStickAxis,
                     this.transform.localPosition + new Vector3(0, 0, (50 - chopStickInterval / 2) - chopStickInterval * j + Random.Range(-dispertion, dispertion)),
                     Quaternion.identity, transform);
 
-                chopStickAxises.Add(tempChopStickAxis);
+                    chopStickAxises.Add(tempChopStickAxis);
 
-                chopStickPoints.Add(tempChopStickAxis.transform.GetChild(0).gameObject);
+                    chopStickPoints.Add(tempChopStickAxis.transform.GetChild(0).gameObject);
+                }
             }
         }
 

@@ -10,6 +10,7 @@ public class StageScrollSettings : Editor
 
     SerializedProperty debugMode;
     SerializedProperty speed;
+    SerializedProperty startAreaRange;
     SerializedProperty cornerMargin;
     SerializedProperty cornerSetting;
     SerializedProperty centerChopStickRow;
@@ -28,6 +29,7 @@ public class StageScrollSettings : Editor
         _target = target as StageScroll;
         debugMode = serializedObject.FindProperty("debugMode");
         speed = serializedObject.FindProperty("speed");
+        startAreaRange = serializedObject.FindProperty("startAreaRange");
         cornerMargin = serializedObject.FindProperty("cornerMargin");
         cornerSetting = serializedObject.FindProperty("cornerSetting");
         centerChopStickRow = serializedObject.FindProperty("centerChopStickRow");
@@ -48,6 +50,7 @@ public class StageScrollSettings : Editor
 
         debugMode.boolValue = EditorGUILayout.ToggleLeft("デバッグモード", debugMode.boolValue);
         speed.floatValue = EditorGUILayout.FloatField("進む速さ", speed.floatValue);
+        startAreaRange.floatValue = EditorGUILayout.Slider("最初に箸が来ない範囲", startAreaRange.floatValue, 0f, 300f);
         cornerMargin.floatValue = EditorGUILayout.Slider("角の大きさ(割合)", cornerMargin.floatValue, 0f, 1f);
         cornerSetting.boolValue = EditorGUILayout.ToggleLeft("角を別に設定する", cornerSetting.boolValue);
 

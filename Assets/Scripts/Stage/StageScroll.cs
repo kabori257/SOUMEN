@@ -47,6 +47,10 @@ public class StageScroll : MonoBehaviour
     public float speed;                   //ステージが移動するスピード
 
     [SerializeField]
+    [Header("ゲーム開始時の箸が出てこない範囲")]
+    public float startAreaRange;
+
+    [SerializeField]
     [Header("ステージの角の範囲(割合)")]
     [Range(0.05f, 1.0f)]
     public float cornerMargin;
@@ -141,6 +145,7 @@ public class StageScroll : MonoBehaviour
         //初めにステージを10個生成
         for (int i = 0; i < 10; i++)
         {
+            /*
             if (i == goalPosCount)
             {
                 stages.Add(Instantiate(goalStageObj, new Vector3(0, 0, i * 100), new Quaternion()));
@@ -148,6 +153,15 @@ public class StageScroll : MonoBehaviour
             }
             else if (i < 1)
                 stages.Add(Instantiate(startStageObj, new Vector3(0, 0, i * 100), new Quaternion()));
+            else
+                stages.Add(Instantiate(stageObj, new Vector3(0, 0, i * 100), new Quaternion()));
+            */
+
+            if (i == goalPosCount)
+            {
+                stages.Add(Instantiate(goalStageObj, new Vector3(0, 0, i * 100), new Quaternion()));
+                goalPosCount = 100;
+            }
             else
                 stages.Add(Instantiate(stageObj, new Vector3(0, 0, i * 100), new Quaternion()));
         }
