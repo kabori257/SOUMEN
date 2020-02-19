@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
 
                 //JoyConが振られたら（x, y, zの加速度の合計がtriggerValueより多かったら）かつ、クールダウンが終わっていたら。
                 if ((Mathf.Abs(MyJoyCon.joyconDec.accel.x ) + Mathf.Abs(MyJoyCon.joyconDec.accel.y)
-                    + Mathf.Abs(MyJoyCon.joyconDec.accel.z) > triggerValue || Input.GetKey(KeyCode.Space)) && waitTime >= playerManager.shotCoolTime)
+                    + Mathf.Abs(MyJoyCon.joyconDec.accel.z) > triggerValue || Input.GetKey(KeyCode.Space) || Input.GetAxis("X-Box Bumper") > 0) && waitTime >= playerManager.shotCoolTime)
                 {
                     audioSource.clip = soundManager.shotSE;
                     audioSource.volume = soundManager.shotVolume;

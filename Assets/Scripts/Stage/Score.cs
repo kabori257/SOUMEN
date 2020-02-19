@@ -7,8 +7,16 @@ using TMPro;
 public class Score : MonoBehaviour
 {
     int soumenCount;
-
     public static RANK scoreRank { get; set; }
+
+    [Header("スコア:良 (この値以下が\"不可\")")]
+    public int ryou;
+
+    [Header("スコア:優")]
+    public int yuu;
+
+    [Header("スコア:秀")]
+    public int shuu;
 
     public Sprite[] spriteArray = new Sprite[4];
     public GameObject imageObj;
@@ -16,10 +24,8 @@ public class Score : MonoBehaviour
 
     private PlayerManager playerManager;
 
-	private int maxSoumenCount;
-
 	//デバッグ用
-	public int score;
+	[SerializeField] private int score;
 
     struct Rank
     {
@@ -37,16 +43,12 @@ public class Score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //初期値
-        //soumenCount = PlayerManager.HP;
         playerManager = GameObject.Find("PlayerStatusManager").GetComponent<PlayerManager>();
-
         soumenCount = playerManager.hp;
-        maxSoumenCount = playerManager.hpLevel[playerManager.hpLevel.Length - 1];
 
-        rank.ryou = maxSoumenCount / 3.0f;
-        rank.yuu = (maxSoumenCount / 3.0f) * 2;
-        rank.syuu = maxSoumenCount;
+        rank.ryou = ryou;
+        rank.yuu = yuu;
+        rank.syuu = shuu;
 
         scorejudge();
         Ranking();
@@ -60,24 +62,15 @@ public class Score : MonoBehaviour
 
     void Ranking()
     {
-        //switch (scoreRank)
-        //{
-        //    case RANK.Huka:break;
-        //    case RANK.Ryou:break;
-        //    case RANK.Yuu:break;
-        //    case RANK.Syuu:break;
-        //    default:break;
-        //}
-
         //結果を表示
         imageObj.GetComponent<Image>().sprite = spriteArray[(int)scoreRank];
-        txt.GetComponent<TextMeshProUGUI>().text = "" + soumenCount;
+        txt.GetComponent<TextMeshProUGUI>().text = soumenCount.ToString();
     }
 
     void scorejudge()
     {
         //評価によって結果を判定する
-        if (soumenCount <= 0)
+        if (soumenCount <= ryou)
         {
             scoreRank = RANK.Huka;
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// タイトルシーンから操作方法シーンへの遷移
@@ -11,6 +12,7 @@ public class SceneTransitionManager : MonoBehaviour
     /* public変数*/
 
     /* --- SerializeFieldの変数 --- */
+    [SerializeField] Sprite tutorialImage2;
 
     /* --- 変数 ---*/
 
@@ -21,6 +23,7 @@ public class SceneTransitionManager : MonoBehaviour
     private AudioSource SM_AudioSource;
 
     private bool isChanged = true;
+    private bool tutorialFlag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -41,10 +44,20 @@ public class SceneTransitionManager : MonoBehaviour
     {
 
         //遷移する際に押してもらうボタン。
-        if ((Input.GetKeyDown(KeyCode.Space) || myJoyCon.GetAnyButtonDown())
+        if ((Input.GetKeyDown(KeyCode.Space) || myJoyCon.GetAnyButtonDown() || Input.GetKey("joystick button 0")
+            || Input.GetKey("joystick button 1") || Input.GetKey("joystick button 2") || Input.GetKey("joystick button 3"))
             && SceneManager.GetActiveScene().buildIndex != 2 && isChanged)
         {
-            SceneTransition(false);
+            if (SceneManager.GetActiveScene().buildIndex == 1 && !tutorialFlag)
+            {
+                GameObject.Find("Canvas").transform.GetChild(0).GetComponent<Image>().sprite = tutorialImage2;
+                tutorialFlag = true;
+            }
+            else
+            {
+                SceneTransition(false);
+                tutorialFlag = false;
+            }
         }
     }
 

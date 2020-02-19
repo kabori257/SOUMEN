@@ -68,7 +68,7 @@ public class NewPlayerMove : MonoBehaviour
     /// <param name="roll"></param>
     void Move(ref Vector3 roll)
     {
-        if (MyJoyCon.joyconDec.button == Joycon.Button.SHOULDER_2 || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        if (MyJoyCon.joyconDec.button == Joycon.Button.SHOULDER_2 || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) || Input.GetKey("joystick button 5"))
         {
             if(dashTime < playerManager.dashTime)
             {
@@ -154,11 +154,11 @@ public class NewPlayerMove : MonoBehaviour
     /// <returns></returns>
     float DebugMode()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetAxis("Horizontal2") < -0.1)
         {
             return -playerManager.speed / 2;
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetAxis("Horizontal2") > 0.1)
         {
             return playerManager.speed / 2;
         }

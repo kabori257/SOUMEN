@@ -186,12 +186,10 @@ public class PlayerManager : MonoBehaviour
                 hpImages[j].enabled = false;
             }
         }
-        if (hp % 20 != 0 && hp / hpIconValue < 10)
+        if (hp % hpIconValue != 0 && hp / hpIconValue < 10)
         {
             hpImages[hp / hpIconValue].sprite = hpHalfIcon;
             hpImages[hp / hpIconValue].enabled = true;
         }
-                
-
     }
 }
