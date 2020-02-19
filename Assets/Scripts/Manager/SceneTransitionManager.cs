@@ -50,8 +50,7 @@ public class SceneTransitionManager : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().buildIndex == 1 && !tutorialFlag)
             {
-                GameObject.Find("Canvas").transform.GetChild(0).GetComponent<Image>().sprite = tutorialImage2;
-                tutorialFlag = true;
+                StartCoroutine(TutorialCoroutine());
             }
             else
             {
@@ -109,5 +108,15 @@ public class SceneTransitionManager : MonoBehaviour
         if (isBGM_Changed) SM_AudioSource.Play();
 
         isChanged = true;
+    }
+
+    //効果音の長さを引数に、その分だけ待機する。
+    private IEnumerator TutorialCoroutine()
+    {
+        GameObject.Find("Canvas").transform.GetChild(0).GetComponent<Image>().sprite = tutorialImage2;
+
+        yield return new WaitForSeconds(0.5f);
+
+        tutorialFlag = true;
     }
 }
