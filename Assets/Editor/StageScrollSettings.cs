@@ -9,6 +9,7 @@ public class StageScrollSettings : Editor
     private StageScroll _target;
 
     SerializedProperty debugMode;
+    SerializedProperty goalPosCount;
     SerializedProperty speed;
     SerializedProperty startAreaRange;
     SerializedProperty cornerMargin;
@@ -28,6 +29,7 @@ public class StageScrollSettings : Editor
     {
         _target = target as StageScroll;
         debugMode = serializedObject.FindProperty("debugMode");
+        goalPosCount = serializedObject.FindProperty("goalPosCount");
         speed = serializedObject.FindProperty("speed");
         startAreaRange = serializedObject.FindProperty("startAreaRange");
         cornerMargin = serializedObject.FindProperty("cornerMargin");
@@ -49,6 +51,7 @@ public class StageScrollSettings : Editor
         serializedObject.Update();
 
         debugMode.boolValue = EditorGUILayout.ToggleLeft("デバッグモード", debugMode.boolValue);
+        goalPosCount.intValue = EditorGUILayout.IntField("ゴールの長さ", goalPosCount.intValue);
         speed.floatValue = EditorGUILayout.FloatField("進む速さ", speed.floatValue);
         startAreaRange.floatValue = EditorGUILayout.Slider("最初に箸が来ない範囲", startAreaRange.floatValue, 0f, 300f);
         cornerMargin.floatValue = EditorGUILayout.Slider("角の大きさ(割合)", cornerMargin.floatValue, 0f, 1f);

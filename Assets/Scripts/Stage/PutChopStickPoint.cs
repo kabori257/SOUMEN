@@ -24,14 +24,14 @@ public class PutChopStickPoint : MonoBehaviour
 
         if (stageScroll.cornerSetting)
         {
-            PutChopStick(-90 + (180 * stageScroll.cornerMargin / 2) + 7, 90 - (180 * stageScroll.cornerMargin / 2) - 7,
+            PutChopStick(-93 + (180 * stageScroll.cornerMargin / 2) + 7, 93 - (180 * stageScroll.cornerMargin / 2) - 7,
                 stageScroll.centerChopStickRow, stageScroll.centerChopStickColumn, stageScroll.centerDispertion, false);
-            PutChopStick(-90, -90 + (180 * stageScroll.cornerMargin / 2), stageScroll.cornerChopStickRow, stageScroll.cornerChopStickColumn, stageScroll.cornerDispertion, true);
-            PutChopStick(90 - (180 * stageScroll.cornerMargin / 2), 90f, stageScroll.cornerChopStickRow, stageScroll.cornerChopStickColumn, stageScroll.cornerDispertion, true);
+            PutChopStick(-93, -93 + (180 * stageScroll.cornerMargin / 2), stageScroll.cornerChopStickRow, stageScroll.cornerChopStickColumn, stageScroll.cornerDispertion, true);
+            PutChopStick(93 - (180 * stageScroll.cornerMargin / 2), 93f, stageScroll.cornerChopStickRow, stageScroll.cornerChopStickColumn, stageScroll.cornerDispertion, true);
         }
         else
         {
-            PutChopStick(-90, 90, stageScroll.chopStickRowNum, stageScroll.chopStickColumnNum, stageScroll.cornerMargin, stageScroll.cornerRate, stageScroll.dispertion);
+            PutChopStick(-93, 93, stageScroll.chopStickRowNum, stageScroll.chopStickColumnNum, stageScroll.cornerMargin, stageScroll.cornerRate, stageScroll.dispertion);
         }
     }
 

@@ -235,9 +235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d8e7e9634a0494d9346a0af7563fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ryou: 0
-  yuu: 300
-  shuu: 600
+  ryou: 300
+  yuu: 600
+  shuu: 1000
   spriteArray:
   - {fileID: 21300000, guid: d62da347cbf14dc4aaf07eede12464b6, type: 3}
   - {fileID: 21300000, guid: e67bccf45386c8f4fbd8c167a3b494b8, type: 3}

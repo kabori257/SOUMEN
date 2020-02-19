@@ -77,7 +77,7 @@ public class ChopStickController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !other.gameObject.GetComponent<PlayerController>().isJump)
         {
             playerManager.Damaged(transform.position);
         }

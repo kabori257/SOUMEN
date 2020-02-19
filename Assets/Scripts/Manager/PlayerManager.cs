@@ -107,14 +107,7 @@ public class PlayerManager : MonoBehaviour
         //x軸における中心からの距離の割合
         damageRatio = 1 - Mathf.Abs(collideDistance / collideSize);
 
-        if (currentLevel != 0)
-        {
-            hp -= (int)(damageLevel[currentLevel] * damageRatio);
-        }
-        else
-        {
-            hp = 0;
-        }
+        hp -= (int)(damageLevel[currentLevel] * damageRatio);
 
         audioSource.clip = soundManager.eatSE;
         audioSource.volume = soundManager.eatVolume;
